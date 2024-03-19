@@ -14,5 +14,9 @@ public interface EquipoRepository extends JpaRepository<Equipo, Long> {
 
     Optional<Equipo> findById(Long id);
 
+    Equipo findByNombre(String nombre);
+
+    List<Equipo> findByNombreContaining(String nombre);
+
 }
 
