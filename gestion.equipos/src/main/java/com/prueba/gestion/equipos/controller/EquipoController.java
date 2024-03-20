@@ -37,10 +37,9 @@ public class EquipoController {
     }
 
     @GetMapping("/equipos/buscar")
-    public ResponseEntity<GenericResponse<List<Equipo>>> findEquiposByNombre(@RequestParam("nombre") String nombre) {
+    public ResponseEntity<GenericResponse<List<Equipo>>> getEquiposByNombre(@RequestParam("nombre") String nombre) {
         try {
             List<Equipo> equipoList = equipoService.findEquiposByNombre(nombre);
-            System.out.println(equipoList);
             return GenericResponse.okResponse(equipoList);
         } catch (ResourceException ex) {
             return GenericResponse.exceptionResponse(ex);
