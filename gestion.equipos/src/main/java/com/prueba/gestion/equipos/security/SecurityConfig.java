@@ -46,10 +46,7 @@ public class SecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().requestMatchers(new AntPathRequestMatcher("/h2-console/**"));
     }
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizerSwagger(){
-        return (web) -> web.ignoring().requestMatchers(new AntPathRequestMatcher("/swagger-ui/**"));
-    }
+    private static final String[] SWAGGER_PATHS = {"/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**", "/webjars/swagger-ui/**"};
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -66,8 +63,9 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authenticationManager(authenticationManager)
                 .sessionManagement(c -> c.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(c -> c.requestMatchers(SWAGGER_PATHS).permitAll())
                 .authorizeHttpRequests(c ->
-                        c.requestMatchers("/v3/**\", \"/swagger-ui/**","/auth/login").permitAll()
+                        c.requestMatchers("/auth/login").permitAll()
                                 .anyRequest().authenticated())
                 .addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build();
