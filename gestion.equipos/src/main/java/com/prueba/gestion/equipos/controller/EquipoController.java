@@ -4,7 +4,6 @@ import com.prueba.gestion.equipos.exception.ResourceException;
 import com.prueba.gestion.equipos.model.Equipo;
 import com.prueba.gestion.equipos.rest.GenericResponse;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.prueba.gestion.equipos.service.EquipoService;
