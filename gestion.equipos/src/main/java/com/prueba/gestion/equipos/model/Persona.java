@@ -8,16 +8,19 @@ public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
+    private String username;
     private String password;
+    @Transient
+    private String token;
 
     public Persona() {
     }
 
-    public Persona(Long id, String nombre, String password) {
+    public Persona(Long id, String username, String password, String token) {
         this.id = id;
-        this.nombre = nombre;
+        this.username = username;
         this.password = password;
+        this.token = token;
     }
 
     public Long getId() {
@@ -28,12 +31,12 @@ public class Persona {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -42,5 +45,13 @@ public class Persona {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

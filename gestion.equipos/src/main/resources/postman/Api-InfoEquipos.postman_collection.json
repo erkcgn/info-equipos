@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "4db7246d-c34f-41cd-9a80-eaae88a5d2ff",
+		"name": "Api-InfoEquipos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24171897"
+	},
+	"item": [
+		{
+			"name": "auth/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test\",\r\n    \"password\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/equipos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0Iiwicm9sZXMiOiJST0xFX3Rlc3QiLCJpZCI6MSwiZXhwIjoxNzEwOTgxODY3fQ.L-YnTgAIiNYSemFlr6KChUelpbtmNHX5bNxVyi6_zTnlcYRaZS0YDE2j2Qw4KkJpcr-LtR8huFa5M8Y8P6C8JA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/equipos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"equipos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/equipos/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0Iiwicm9sZXMiOiJST0xFX3Rlc3QiLCJpZCI6MSwiZXhwIjoxNzEwOTgxODY3fQ.L-YnTgAIiNYSemFlr6KChUelpbtmNHX5bNxVyi6_zTnlcYRaZS0YDE2j2Qw4KkJpcr-LtR8huFa5M8Y8P6C8JA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/equipos/22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"equipos",
+						"22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/equipos/buscar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0Iiwicm9sZXMiOiJST0xFX3Rlc3QiLCJpZCI6MSwiZXhwIjoxNzEwOTgxODY3fQ.L-YnTgAIiNYSemFlr6KChUelpbtmNHX5bNxVyi6_zTnlcYRaZS0YDE2j2Qw4KkJpcr-LtR8huFa5M8Y8P6C8JA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/equipos/buscar?nombre=FC Barcelona",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"equipos",
+						"buscar"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "FC Barcelona"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/equipos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0Iiwicm9sZXMiOiJST0xFX3Rlc3QiLCJpZCI6MSwiZXhwIjoxNzEwOTgxODY3fQ.L-YnTgAIiNYSemFlr6KChUelpbtmNHX5bNxVyi6_zTnlcYRaZS0YDE2j2Qw4KkJpcr-LtR8huFa5M8Y8P6C8JA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Eternos\",\r\n    \"liga\": \"Topa Azul\",\r\n    \"pais\": \"Argentina\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/equipos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"equipos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/equipos/{id}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0Iiwicm9sZXMiOiJST0xFX3Rlc3QiLCJpZCI6MSwiZXhwIjoxNzEwOTgxODY3fQ.L-YnTgAIiNYSemFlr6KChUelpbtmNHX5bNxVyi6_zTnlcYRaZS0YDE2j2Qw4KkJpcr-LtR8huFa5M8Y8P6C8JA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"nombre\": \"Pandora\",\r\n    \"liga\": \"Elenia Sport\",\r\n    \"pais\": \"Argentina\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/equipos/25",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"equipos",
+						"25"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/{id}",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0Iiwicm9sZXMiOiJST0xFX3Rlc3QiLCJpZCI6MSwiZXhwIjoxNzEwOTgxODY3fQ.L-YnTgAIiNYSemFlr6KChUelpbtmNHX5bNxVyi6_zTnlcYRaZS0YDE2j2Qw4KkJpcr-LtR8huFa5M8Y8P6C8JA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/equipos/23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"equipos",
+						"23"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
