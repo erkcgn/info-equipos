@@ -3,6 +3,9 @@ package com.prueba.gestion.equipos.controller;
 import com.prueba.gestion.equipos.exception.ResourceException;
 import com.prueba.gestion.equipos.model.Equipo;
 import com.prueba.gestion.equipos.rest.GenericResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,11 +24,18 @@ public class EquipoController {
         this.equipoService = equipoService;
     }
 
+    @Operation(summary = "Consulta de Todos los Equipos", description = "Devuelve la lista de todos los equipos de fútbol registrados.")
     @GetMapping("/equipos")
     public ResponseEntity<List<Equipo>> getAllEquipos(){
         List<Equipo> equipoList = equipoService.findAllEquipos();
         return ResponseEntity.ok(equipoList);
     }
+
+    @Operation(summary = "Consulta de un Equipo por ID", description = "Devuelve la información del equipo correspondiente al ID proporcionado.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Devuelve la información del equipo correspondiente al ID proporcionado."),
+            @ApiResponse(responseCode = "404", description = "Equipo no encontrado")
+    })
     @GetMapping("/equipos/{id}")
     public ResponseEntity<GenericResponse<Equipo>> getEquipoById(@PathVariable("id") Long id) {
         try {
@@ -36,6 +46,10 @@ public class EquipoController {
         }
     }
 
+    @Operation(summary = "Búsqueda de Equipos por Nombre", description = "Devuelve la lista de equipos cuyos nombres contienen el valor proporcionado en el parámetro de búsqueda.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Equipos encontrados")
+    })
     @GetMapping("/equipos/buscar")
     public ResponseEntity<GenericResponse<List<Equipo>>> getEquiposByNombre(@RequestParam("nombre") String nombre) {
         try {
@@ -45,7 +59,11 @@ public class EquipoController {
             return GenericResponse.exceptionResponse(ex);
         }
     }
-
+    @Operation(summary = "Creación de un equipo", description = "Datos del nuevo equipo.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Datos del nuevo equipo"),
+            @ApiResponse(responseCode = "400", description = "La solicitud es invalida")
+    })
     @PostMapping("/equipos")
     public ResponseEntity<GenericResponse<Equipo>> createEquipo(@RequestBody @NotNull Equipo equipo) {
         try {
@@ -57,7 +75,11 @@ public class EquipoController {
             throw new RuntimeException(e);
         }
     }
-
+    @Operation(summary = "Actualización de Información de un Equipo", description = "Datos actualizados del equipo.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Devuelve la información actualizada del equipo"),
+            @ApiResponse(responseCode = "404", description = "Equipo no encontrado")
+    })
     @PutMapping("/equipos/{id}")
     public ResponseEntity<GenericResponse<Equipo>> updateEquipoById(@PathVariable("id") Long id, @RequestBody Equipo equipo) {
         try {
@@ -67,7 +89,11 @@ public class EquipoController {
             return GenericResponse.exceptionResponse(ex);
         }
     }
-
+    @Operation(summary = "Eliminación de un Equipo", description = "Elimina un equipo por su ID.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Sin contenid"),
+            @ApiResponse(responseCode = "404", description = "Equipo no encontrado")
+    })
     @DeleteMapping("/equipos/{id}")
     public ResponseEntity<GenericResponse<Void>> deleteEquipoById(@PathVariable("id") Long id) throws ResourceException {
         try {
