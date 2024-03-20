@@ -9,8 +9,8 @@ public class Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
-    @Transient
     private String password;
+    @Transient
     private String token;
 
     public Persona() {
