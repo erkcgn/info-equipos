@@ -3,6 +3,7 @@ package com.prueba.gestion.equipos.service.serviceImpl;
 import com.prueba.gestion.equipos.model.Persona;
 import com.prueba.gestion.equipos.repository.PersonaRepository;
 import com.prueba.gestion.equipos.service.PersonaService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -11,9 +12,11 @@ import java.util.Optional;
 public class PersonaServiceImpl implements PersonaService {
 
     private final PersonaRepository personaRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public PersonaServiceImpl(PersonaRepository personaRepository) {
+    public PersonaServiceImpl(PersonaRepository personaRepository, PasswordEncoder passwordEncoder) {
         this.personaRepository = personaRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -23,7 +26,7 @@ public class PersonaServiceImpl implements PersonaService {
         if (personaExistente == null) {
             Persona objPersona = new Persona();
             objPersona.setUsername("test");
-            objPersona.setPassword("12345");
+            objPersona.setPassword(passwordEncoder.encode("12345"));
             personaRepository.save(objPersona);
         }
     }
